@@ -51,9 +51,9 @@ const HomePage = () => {
         <h1 className="text-4xl font-semibold text-primary">Program</h1>
 
         <div className="flex justify-evenly flex-wrap lg:flex-nowrap gap-7 my-5">
-          <TopProgram bgColor={'E1EFFE'} title={prograpCaption1} url={programImg1}/>
-          <TopProgram bgColor={'edebfe'} title={prograpCaption2} url={programImg2}/>
-          <TopProgram bgColor={'def7ec'} title={prograpCaption3} url={programImg3}/>
+          <TopProgram bgColor={'#E1EFFE'} title={prograpCaption1} url={programImg1}/>
+          <TopProgram bgColor={'#edebfe'} title={prograpCaption2} url={programImg2}/>
+          <TopProgram bgColor={'#def7ec'} title={prograpCaption3} url={programImg3}/>
           <div className="flex flex-col justify-center items-center w-[300px] p-5 h-[210px] ">
             <div className="h-[110px] w-[110px] bg-primary text-white rounded-full flex justify-center items-center">
               go
