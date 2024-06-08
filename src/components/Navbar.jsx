@@ -5,8 +5,8 @@ import React from "react";
 export const Navbar = () => {
   return (
     <div className="navbar z-50 p-0 navbar-no-boxShadow mx-auto bg-white">
-      <div className="w-full  mx-auto shadow-sm">
-        <div className="navbar bg-white navbar-no-boxShadow w-10/12 mx-auto">
+      <div className="w-full z-50 bg-white mx-auto shadow-sm">
+        <div className="navbar  bg-white navbar-no-boxShadow w-10/12 mx-auto">
           <div className="navbar-start">
             <Image
               height={40}
@@ -17,27 +17,27 @@ export const Navbar = () => {
           </div>
           <div className="navbar-center gap-5 max-md:hidden">
             <Link href={"/"}>
-              <div className="navbar-item text-nowrap">Home</div>
+              <div className="navbar-item text-primary text-nowrap">Home</div>
             </Link>
             <Link href={"/resources"}>
-              <div className="navbar-item text-nowrap">Resources</div>
+              <div className="navbar-item text-primary text-nowrap">Resources</div>
             </Link>
             {/* <Link href={"/contact-us"}>
               <div className="navbar-item text-nowrap">Contact Us</div>
             </Link> */}
             <Link href={"/about-us"}>
-              <div className="navbar-item text-nowrap">About Us</div>
+              <div className="navbar-item text-primary text-nowrap">About Us</div>
             </Link>
           </div>
           <div className="navbar-end max-md:hidden">
-            <Link href={'/login'} className="navbar-item">Sign In</Link>
+            <Link href={'/login'} className="navbar-item text-primary" >Sign In</Link>
             <a className="navbar-item btn bg-primary text-white">
               Start training
             </a>
           </div>
           <div className="navbar-end  2xl:hidden ">
             <div className="avatar avatar-ring avatar-md">
-              <div className="dropdown-container">
+              <div className="dropdown-container ">
                 <div className="dropdown">
                   <label
                     className="btn btn-ghost flex cursor-pointer px-0"
@@ -48,17 +48,15 @@ export const Navbar = () => {
                       alt="avatar"
                     />
                   </label>
-                  <div className="dropdown-menu dropdown-menu-bottom-left">
-                    <a className="dropdown-item text-sm">Home</a>
-                    <a tabIndex="-1" className="dropdown-item text-sm">
+                  <div className="dropdown-menu dropdown-menu-bottom-left bg-white">
+                    <Link href={'/'} className="dropdown-item hover:bg-slate-50 text-primary text-sm">Home</Link>
+                    <Link href={'/resources'} tabIndex="-1" className="dropdown-item  hover:bg-slate-50 text-primary text-sm">
                       Resources
-                    </a>
-                    <a tabIndex="-1" className="dropdown-item text-sm">
-                      Contact Us
-                    </a>
-                    <a tabIndex="-1" className="dropdown-item text-sm">
-                      About Us
-                    </a>
+                    </Link>
+                    <Link href={'/aboutus'} tabIndex="-1" className="dropdown-item  hover:bg-slate-50 text-primary text-sm">
+                    About Us
+                    </Link>
+                    
                   </div>
                 </div>
               </div>

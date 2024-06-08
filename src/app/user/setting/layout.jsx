@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div >
       <div>
         <div className="bg-primary h-44">
           <div className="w-10/12 mx-auto flex justify-between items-center h-full">

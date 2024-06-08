@@ -17,7 +17,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={rubik.className}>
       <Navbar />
-        {children}</body>
+    
+    <div className="bg-white">
+    {children}
+    </div>
+    
+        </body>
       <Footer />  
     </html>
   );

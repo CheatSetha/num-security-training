@@ -13,6 +13,7 @@ const Page = () => {
         src={"/assets/images/userconsole/pf.jpg"}
         width={1200}
         height={1200}
+        
       />
       <div className="w-full lg:w-[400px] ">
           {/* form to change email, f9irst name and last name */}

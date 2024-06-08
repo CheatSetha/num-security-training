@@ -16,7 +16,7 @@ const HomePage = () => {
     <div>
       <div className="h-[600px] bg-secondary flex justify-evenly flex-wrap">
         <div className="flex justify-center  flex-col">
-          <h1 className="text-4xl font-bold">
+          <h1 className="text-4xl  font-bold">
             Protect Your Digital Life with Our
           </h1>
           <h1 className="text-3xl font-bold">

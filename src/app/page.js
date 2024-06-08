@@ -2,7 +2,7 @@ import HomePage from "@/components/home/Landing";
 
 export default function Home() {
   return (
-    <main className=" mx-auto">
+    <main className="bg-white mx-auto">
       <HomePage />
      
     </main>

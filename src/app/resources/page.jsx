@@ -4,7 +4,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="w-10/12 mx-auto mt-2">
+    <div className="w-10/12 mx-auto bg-white pt-2 ">
       <div className="flex gap-8  bg-white shadow rounded-[24px] h-16 p-2">
         <div className="bg-primary bg-opacity-10 flex justify-center items-center p-2 rounded-2xl">
           <p className="text-secondary px-3 font-semibold ">My Learning</p>
@@ -53,10 +53,7 @@ const Page = () => {
         </div>
 
         {/* data display here */}
-       <div  className="w-full mb-3 flex  flex-wrap flex-shrink gap-3">
-      
-       
-
+        <div className="w-full mb-3 flex  flex-wrap flex-shrink gap-3">
           <CourseSampleCard />
           <CourseSampleCard />
           <CourseSampleCard />
@@ -67,11 +64,7 @@ const Page = () => {
           <CourseSampleCard />
           <CourseSampleCard />
           <CourseSampleCard />
-
-        
-
-       </div>
-
+        </div>
       </div>
     </div>
   );

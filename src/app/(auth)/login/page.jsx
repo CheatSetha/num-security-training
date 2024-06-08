@@ -16,23 +16,26 @@ const validationShcema = Yup.object({
 
 const Page = () => {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full py-10 bg-white z-0">
       {/* layout background first */}
+      <div className="relative z-10 max-sm:hidden">
       <Image
         src={"/assets/images/auth/bg-1.svg"}
         height={12}
         width={12}
-        className="w-full absolute  max-sm:-mt-60 max-sm:h-96 -mt-60 -z-30"
+        className="w-full absolute max-sm:-mt-60 max-sm:h-96 -mt-60 z-10"
       />
       <Image
         src={"/assets/images/auth/bg-2.svg"}
         height={12}
         width={12}
-        className="w-full absolute max-sm:-mt-60 max-sm:h-96  -mt-60 -z-30"
+        className="w-full absolute max-sm:-mt-60 max-sm:h-96 -mt-60 z-10"
       />
+      </div>
+      
 
-     <div className="w-10/12 mx-auto">
-     <h1 className="text-primary text-5xl font-bold my-20 text-start ms-44">
+     <div className="w-10/12 z-50 relative z-2  mx-auto">
+     <h1 className="text-primary text-5xl font-bold  my-20 text-start xl:ms-44 ms-0">
         {" "}
         Welcome !
       </h1>
@@ -57,13 +60,13 @@ const Page = () => {
             {({ isSubmitting }) => (
               <Form className="flex flex-col gap-4">
                 <div>
-                  <label htmlFor="email">Email</label>
+                  <label className="text-primary" htmlFor="email">Email</label>
                   <br className="" />
                   <Field
                     name="email"
                     type="email"
                     placeholder="Email"
-                    className="border-2 border-primary rounded-md mt-2 h-11 w-full"
+                    className="border-2 bg-slate-50 border-primary rounded-md mt-2 h-11 w-full"
                   />
                   <ErrorMessage
                     name="email"
@@ -72,13 +75,13 @@ const Page = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="password">Password</label>
+                  <label className="text-primary" htmlFor="password">Password</label>
                   <br />
                   <Field
                     name="password"
                     type="password"
                     placeholder="Password"
-                    className="border-2 border-primary rounded-md mt-2 h-11 w-full"
+                    className="border-2 bg-slate-50 border-primary rounded-md mt-2 h-11 w-full"
                   />
                   <ErrorMessage
                     name="password"

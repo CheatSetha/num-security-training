@@ -6,3 +6,8 @@
 .footer{
   height: 120px !important;
 }
+
+/* h1 and p with text color black */
+h1, p {
+  color: black;
+}
