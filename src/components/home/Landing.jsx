@@ -3,6 +3,7 @@ import Featurebox from "./components/Featurebox";
 import TopProgram from "./components/TopProgram";
 import InfoSecurityTraining from "./components/InfoSecurityTraining";
 import PurposAndObjective from "./components/PandO";
+import Image from "next/image";
 
 const HomePage = () => {
   const programImg1 = "/assets/images/Home/Security-1.png"
@@ -25,15 +26,12 @@ const HomePage = () => {
           <p className="my-5 ">
             Empower yourself with the knowlegde to stay safe online
           </p>
-          <button className="btn bg-primary text-white">
+          <button className="btn bg-primary w-fit px-10 text-white">
             Start training now
           </button>
         </div>
         <div className="flex justify-center items-center">
-          <img
-            src="https://ralfvanveen.com/wp-content/uploads/2021/06/Placeholder-_-Glossary.svg"
-            alt="hero"
-          />
+        <Image className="w-[440px]"  src={"/assets/images/home.gif"} width={1200} height={1200} alt="team" />
         </div>
       </div>
       {/* feature box */}
