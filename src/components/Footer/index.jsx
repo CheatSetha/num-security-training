@@ -15,12 +15,12 @@ export const Footer = () => {
             />
           </div>
           <div className="navbar-center ">
-            <div className="navbar-item text-nowrap text-gray-500">
+            <div className="navbar-item max-sm:text-sm md:text-nowrap max-sm:text-center text-gray-500">
               Copyright © 2024 NUM Security Awareness Training platform | All
               Rights Reserved{" "}
             </div>
           </div>
-          <div className="navbar-end"></div>
+          <div className="navbar-end max-sm:hidden"></div>
         </div>
       </div>
     </div>

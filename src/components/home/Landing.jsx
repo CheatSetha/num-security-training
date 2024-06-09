@@ -14,28 +14,32 @@ const HomePage = () => {
   const prograpCaption3 = "Phishing 101"
   return (
     <div>
-      <div className="h-[600px] bg-secondary flex justify-evenly flex-wrap">
-        <div className="flex justify-center  flex-col">
-          <h1 className="text-4xl  font-bold">
-            Protect Your Digital Life with Our
-          </h1>
-          <h1 className="text-3xl font-bold">
-            Cybersecurity Training{" "}
-            <span className="text-[#05a9df]">platform</span>
-          </h1>
-          <p className="my-5 ">
-            Empower yourself with the knowlegde to stay safe online
-          </p>
-          <button className="btn bg-primary w-fit px-10 text-white">
-            Start training now
-          </button>
-        </div>
-        <div className="flex justify-center items-center">
-        <Image className="w-[440px]"  src={"/assets/images/home.gif"} width={1200} height={1200} alt="team" />
-        </div>
-      </div>
+     <div className="bg-secondary w-full">
+     <div className="h-[600px] w-10/12 mx-auto  flex justify-evenly flex-wrap ">
+      
+      <div className="flex  justify-center  flex-col ">
+         <h1 className="text-2xl xl:text-4xl  font-bold">
+           Protect Your Digital Life with Our
+         </h1>
+         <h1 className="text-xl xl:text-3xl font-bold">
+           Cybersecurity Training{" "}
+           <span className="text-[#05a9df]">platform</span>
+         </h1>
+         <p className="my-5 ">
+           Empower yourself with the knowlegde to stay safe online
+         </p>
+         <button className="btn bg-primary w-fit px-10 text-white">
+           Start training now
+         </button>
+       </div>
+       <div className="flex justify-center items-center">
+       <Image className="w-full md:w-[440px]"  src={"/assets/images/home.gif"} width={1200} height={1200} alt="team" />
+       </div>
+     
+     </div>
+     </div>
       {/* feature box */}
-      <div className="-top-24 relative">
+      <div className="-top-24 max-sm:top-0 relative">
         <div className="w-10/12 mx-auto flex flex-wrap justify-center gap-7 ">
           <Featurebox icon={"o"} number={1} title={"Flexible"} />
           <Featurebox icon={"o"} number={2} title={"Reduced Cost"} />
@@ -44,11 +48,11 @@ const HomePage = () => {
       </div>
 
       {/* top program */}
-      <div className="w-10/12 mx-auto ">
-        <h1 className="text-4xl font-semibold text-primary">Brows Top Security Awareness </h1>
-        <h1 className="text-4xl font-semibold text-primary">Program</h1>
+      <div className="w-10/12 mx-auto max-sm:mt-7">
+        <h1 className="text-3xl  xl:text-4xl font-semibold text-primary">Brows Top Security Awareness </h1>
+        <h1 className="text-3xl xl:text-4xl font-semibold text-primary">Program</h1>
 
-        <div className="flex justify-evenly flex-wrap lg:flex-nowrap gap-7 my-5">
+        <div className="flex justify-evenly flex-wrap lg:flex-nowrap gap-3 md:gap-7 my-5">
           <TopProgram bgColor={'#E1EFFE'} title={prograpCaption1} url={programImg1}/>
           <TopProgram bgColor={'#edebfe'} title={prograpCaption2} url={programImg2}/>
           <TopProgram bgColor={'#def7ec'} title={prograpCaption3} url={programImg3}/>

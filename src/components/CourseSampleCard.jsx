@@ -3,10 +3,10 @@ import React from "react";
 
 const CourseSampleCard = () => {
   return (
-    <div className="lg:w-[290px] w-full bg-secondary h-[220px] rounded-xl p-3">
+    <div className="lg:w-[290px] md:w-[260px]  w-full bg-secondary h-[220px] rounded-xl p-3">
       <Image
         alt="course-cover"
-        className="w-[60%] mx-auto"
+        className="md:w-[60%] w-[50%] sm:w-[35%] mx-auto"
         src={"/assets/images/sample.png"}
         width={1200}
         height={1200}

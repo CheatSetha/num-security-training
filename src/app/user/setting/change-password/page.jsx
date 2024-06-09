@@ -9,7 +9,7 @@ const page = () => {
           Change Password
         </h1>
         <div className="flex items-center justify-center gap-10">
-          <div className="w-full lg:w-[400px] ">
+          <div className="w-full lg:w-[400px] text-primary">
             <form>
               <div className="mb-5">
                 <label>Current Password</label>

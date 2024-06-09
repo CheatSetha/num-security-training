@@ -10,7 +10,7 @@ const TopProgram = ({url, bgColor, title}) => {
    
    
    return (
-     <div style={{backgroundColor: bg}} className={`w-[300px] p-5 h-[210px] rounded-lg `}>
+     <div style={{backgroundColor: bg}} className={`w-full md:w-[300px] p-5 h-[210px] rounded-lg `}>
        <Image className='w-36 mx-auto' src={imagesUrl} alt='course cover' width={200} height={120} />
         {/* <img src={imagesUrl} /> */}
        <p>{textCaption}</p>

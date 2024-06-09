@@ -4,7 +4,7 @@ import React from "react";
 const InfoSecurityTraining = () => {
   return (
     <div>
-      <h1 className="font-semibold text-primary text-4xl my-5 mb-12">
+      <h1 className="font-semibold text-primary text-3xl  xl:text-4xl mt-12 mb-12">
         Security Awareness Training
       </h1>
       <div className="flex flex-wrap">
@@ -15,7 +15,7 @@ const InfoSecurityTraining = () => {
           className="lg:w-6/12 w-full"
         />
         <div className="lg:w-6/12 w-full p-0 lg:ps-10">
-          <h1 className="text-[36px] font-semibold text-primary">What is security awareness training?</h1>
+          <h1 className="text-3xl my-12 md:my-0 md:mb-5 md:text-[36px] font-semibold text-primary">What is security awareness training?</h1>
           <p className="text-primary text-xl leading-9 ">
             Security awareness training is basically an educational program that
             teaches people about cyberseucity threats and how to protect

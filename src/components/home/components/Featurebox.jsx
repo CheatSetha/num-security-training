@@ -5,7 +5,7 @@ const Featurebox = ({icon, title , number}) => {
     const titles = title ? title : "Feature"
     const numbers = number ? number : 1
   return (
-    <div className="w-[350px] h-[210px] flex justify-between bg-white shadow-sm rounded-lg ">
+    <div className="w-full xl:w-[350px] h-[210px] flex justify-between bg-white shadow-sm rounded-lg ">
       <div className=" p-5">
         <div className="w-[60px] h-[60px] rounded-full bg-primary flex justify-center items-center text-white text-2xl">
           {icons}

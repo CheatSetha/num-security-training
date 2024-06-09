@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Layout({ children }) {
   return (
-    <div >
+    <div className="">
       <div>
         <div className="bg-primary h-44">
           <div className="w-10/12 mx-auto flex justify-between items-center h-full">
@@ -20,19 +20,19 @@ export default function Layout({ children }) {
             </div>
 
             {/* list of neccessary items */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 max-sm:hidden">
               <div className="rounded-[20px] bg-white bg-opacity-15  h-12 px-5 text-white flex justify-center items-center">
-                <p className="font-semibold text-xl">
-                  1 <span className="text-lg font-light">TODO</span>
+                <p className="font-semibold text-xl text-white">
+                  1 <span className="text-lg font-light text-white">TODO</span>
                 </p>
               </div>
               <div className="rounded-[20px] bg-white bg-opacity-15  h-12 px-5 text-white flex justify-center items-center">
-                <p className="font-semibold text-xl">
+                <p className="font-semibold text-xl text-white">
                   0 <span className="text-lg font-light">OVERDUE</span>
                 </p>
               </div>
               <div className="rounded-[20px] bg-white bg-opacity-15  h-12  px-5 text-white flex justify-center items-center">
-                <p className="font-semibold text-xl">
+                <p className="font-semibold text-xl text-white">
                   0 <span className="text-lg font-light">COMPLETED</span>
                 </p>
               </div>
@@ -47,6 +47,7 @@ export default function Layout({ children }) {
             </div>
           </div>
           {/* change profile content */}
+
           {children}
         </div>
       </div>
