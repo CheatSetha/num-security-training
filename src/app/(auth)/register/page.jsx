@@ -16,31 +16,32 @@ const validationShcema = Yup.object({
 });
 
 const Page = () => {
+  
   return (
-    <div className="w-full  py-10 bg-white z-0">
+    <div className="w-full   pb-8 bg-white z-0">
       {/* layout background first */}
-     <div className="relative z-10 max-sm:hidden" >
-     <Image
-        src={"/assets/images/auth/bg-1.svg"}
-        height={12}
-        width={12}
-        className="w-full absolute  max-sm:-mt-60 max-sm:h-96 -mt-60 -z-30"
-      />
-      <Image
-        src={"/assets/images/auth/bg-2.svg"}
-        height={12}
-        width={12}
-        className="w-full absolute max-sm:-mt-60 max-sm:h-96  -mt-60 -z-30"
-      />
-     </div>
+      <div className="relative z-10 max-sm:hidden">
+        <Image
+          src={"/assets/images/auth/bg-1.svg"}
+          height={12}
+          width={12}
+          className="w-full auth-bg absolute max-sm:-mt-60 max-sm:h-96 -mt-60 z-10 lg:-mt-8 xl:-mt-[170px] 2xl:-mt-[400px]"
+        />
+        <Image
+          src={"/assets/images/auth/bg-2.svg"}
+          height={12}
+          width={12}
+          className="w-full auth-bg  absolute max-sm:-mt-60 max-sm:h-96 -mt-60 z-10 lg:-mt-8 xl:-mt-[170px] 2xl:-mt-[400px]"
+        />
+      </div>
 
      <div className="w-10/12 z-50 relative   mx-auto">
-     <h1 className="text-primary text-3xl pb-5 md:text-5xl font-bold mt-20">
+     <h1 className="text-primary text-3xl pb-5 md:text-5xl font-bold md:mt-20">
         {" "}
         Register New Account!
       </h1>
 
-      <div className="flex justify-center items-center w-full ">
+      <div className="flex justify-evenly gap-x-20 items-center w-full ">
         <Image
           src={"/assets/images/auth/register.svg"}
           height={12}
@@ -48,7 +49,7 @@ const Page = () => {
           className="w-52 md:w-96 max-sm:hidden h-96 "
         />
 
-        <div className="w-full md:w-[400px] max-w-md mx-auto text-primary bg-white shadow p-5 rounded-lg">
+        <div className="w-full md:w-[400px] max-w-md  text-primary bg-white shadow p-5 rounded-lg">
           {/* register input box */}
           <Formik
             initialValues={{

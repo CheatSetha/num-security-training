@@ -99,7 +99,7 @@ class MyUploadAdapter {
                   console.log(data?.url, "url image")
                   // const url = data?.data?.url;
 
-                  resolve({ default: data?.data?.path });
+                  resolve({ default: data?.url});
                 });
               } else {
                 reject(response.statusText);

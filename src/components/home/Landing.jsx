@@ -1,11 +1,26 @@
+"use client"
 import React from "react";
 import Featurebox from "./components/Featurebox";
 import TopProgram from "./components/TopProgram";
 import InfoSecurityTraining from "./components/InfoSecurityTraining";
 import PurposAndObjective from "./components/PandO";
 import Image from "next/image";
+import { useGetMeQuery } from "@/store/features/auth/authApiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "@/store/features/auth/authSlice";
 
 const HomePage = () => {
+  const { data: user, isLoading, isSuccess } = useGetMeQuery();
+  const data = useSelector((state) => state.auth);
+  console.log(data, "this is the data in nvabar");
+  console.log(useSelector((state) => state))
+
+  const dispatch = useDispatch();
+
+  isLoading && console.log("loading");
+  isSuccess && console.log("get me fetch success");
+  isSuccess && console.log(user, "user data");
+  isSuccess && dispatch(setCurrentUser(user));
   const programImg1 = "/assets/images/Home/Security-1.png"
   const programImg2 = "/assets/images/Home/Security-2.png"
   const programImg3 = "/assets/images/Home/Security-3.png"

@@ -2,6 +2,7 @@ import { Inter, Rubik } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import Providers from "@/store/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 const rubik = Rubik({
@@ -15,10 +16,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body style={{backgroundColor: "white"}} className={rubik.className}>
-        <Navbar />
+      <body style={{ backgroundColor: "white" }} className={rubik.className}>
+        <Providers>
+          <Navbar />
 
-        <div className="bg-white">{children}</div>
+          <div className="bg-white">{children}</div>
+        </Providers>
       </body>
       <Footer />
     </html>

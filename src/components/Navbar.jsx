@@ -1,9 +1,57 @@
+"use client";
+
+import { getDecryptedRefreshToken } from "@/lib/cryptography";
+import { useGetMeQuery } from "@/store/features/auth/authApiSlice";
+import { setCurrentUser } from "@/store/features/auth/authSlice";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-export const Navbar = async () => {
-  let isLogged = true;
+export const Navbar = () => {
+  const { data: user, isLoading, isSuccess } = useGetMeQuery();
+  const data = useSelector((state) => state.auth);
+  console.log(data, "this is the data in nvabar");
+  console.log(useSelector((state) => state))
+
+  const dispatch = useDispatch();
+
+  isLoading && console.log("loading");
+  isSuccess && console.log("get me fetch success");
+  isSuccess && console.log(user, "user data");
+  isSuccess && dispatch(setCurrentUser(user));
+  //  console.log(getDecryptedRefreshToken(),"plain refresh token")
+  const handleGetToken = async () => {
+    const token = await getDecryptedRefreshToken();
+    console.log("token", token);
+  };
+  // handle getme
+  const handleGetMe = async () => {
+    try {
+      const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}auth/me`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${data?.token}`,
+        },
+      });
+      const response = await data.json();
+      console.log("response", response);
+      if (response.code === 200) {
+        dispatch(setCurrentUser(response.data));
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  useEffect(() => {
+    handleGetMe();
+    handleGetToken();
+  
+  }, []);
+
+  let isLogged = user ? true : false;
   return (
     <div className="navbar z-50 p-0 navbar-no-boxShadow mx-auto bg-white">
       <div className="w-full z-50 bg-white mx-auto shadow-sm">
@@ -24,6 +72,9 @@ export const Navbar = async () => {
               <div className="navbar-item text-primary text-nowrap">
                 Resources
               </div>
+            </Link>
+            <Link href={"/awarenessmonth"}>
+              <div className="navbar-item text-primary text-nowrap">Blogs</div>
             </Link>
 
             <Link href={"/about-us"}>
@@ -62,6 +113,7 @@ export const Navbar = async () => {
                         alt="avatar"
                       />
                     </label>
+                    {user?.data?.name}
                     <div className="dropdown-menu dropdown-menu-bottom-left bg-white">
                       <Link
                         href={"/user/setting"}
