@@ -30,7 +30,7 @@ export function decrypt(ciphertext, secretKey) {
 
 // store refresh token in secure local storage
 export function storeRefreshToken(refreshToken) {
-  localStorage.setItem("username", "admin");
+  localStorage.setItem("token", refreshToken);
   secureLocalStorage.setItem(
     process.env.NEXT_PUBLIC_SECURE_LOCAL_STORAGE_PREFIX,
     refreshToken

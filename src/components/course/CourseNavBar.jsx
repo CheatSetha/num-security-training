@@ -9,7 +9,8 @@ import React from 'react'
 const CourseNavBar = () => {
 
     const pathname = usePathname()
-    console.log(pathname)
+    // console.log(pathname)
+    
   return (
     <>
     <Link href='/user/learningconsole'>

@@ -113,7 +113,7 @@ export const Navbar = () => {
                         alt="avatar"
                       />
                     </label>
-                    {user?.data?.name}
+                 
                     <div className="dropdown-menu dropdown-menu-bottom-left bg-white">
                       <Link
                         href={"/user/setting"}

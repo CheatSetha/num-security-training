@@ -11,6 +11,14 @@ export const authApiSlice = apiSlice.injectEndpoints({
         body: { ...credentials },
       }),
     }),
+    register: builder.mutation({
+      query: (credentials) => ({
+        url: "users/register",
+        method: "POST",
+        body: { ...credentials },
+      }),
+    
+    }),
     getMe: builder.query({
       query: () => "auth/me",
       keepUnusedDataFor: 5,
@@ -20,4 +28,4 @@ export const authApiSlice = apiSlice.injectEndpoints({
   }),
 });
 // auto generated hooks for login mutation
-export const { useLoginMutation, useGetMeQuery } = authApiSlice;
+export const { useLoginMutation, useGetMeQuery, useRegisterMutation } = authApiSlice;

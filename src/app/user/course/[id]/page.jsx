@@ -1,30 +1,23 @@
+'use client'
 import CardCourse from "@/components/course/CardCourse";
-import Image from "next/image";
-import Link from "next/link";
+import HeaderCourseDetail from "@/components/course/HeaderCourseDetail";
+import { useGetCourseQuery } from "@/store/features/course/courseSlice";
+import { useParams } from "next/navigation";
 import React from "react";
 
 const Page = () => {
+  const { id } = useParams();
+  console.log(id, "id in course detail header");
+  const {data} = useGetCourseQuery(id)
+  console.log(data, "data in course detail page")
   return (
     <div className="bg-secondary h-screen">
-      <div className="bg-primary h-44">
-        <div className="flex w-10/12 mx-auto  gap-5 items-center h-full">
-          <Link href="/user/learningconsole">
-            <Image
-              className="w-6  "
-              src={"/assets/images/userconsole/arrow-icons-white.svg"}
-              width={12}
-              height={12}
-            />
-          </Link>
-          <p className="font-semibold text-white text-xl">
-            Security Awareness - Essentials
-          </p>
-        </div>
-      </div>
+
+      <HeaderCourseDetail courseName={data?.data?.courseName}/>
       <div className="w-10/12 mx-auto flex items-center px-5 h-16 rounded-[24px] bg-white shadow -mt-11">
         <progress
           className="progress w-full progress-flat-secondary"
-          value="20"
+          value="0"
           max="100"
         ></progress>
       </div>
@@ -45,7 +38,12 @@ const Page = () => {
             <p className="text-xl text-white">Start</p>
           </div>
         </div>
-        <CardCourse />
+        {data && data?.data?.sections.map((section) => (
+          <CardCourse key={section._id} title={section?.sectionTitle} detail={section?.details} courseID={data?.data?._id} sectionID={section.sectionUUID}/>
+        ))}
+
+
+        {/* <CardCourse /> */}
       </div>
     </div>
   );

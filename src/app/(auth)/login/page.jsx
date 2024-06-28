@@ -39,6 +39,8 @@ const handleGetMe = async (token) => {
     console.log("response in login page", response);
     if (response.code === 200) {
       dispatch(setCurrentUser(response));
+      // set refresh token to local storage
+      
     }
   } catch (error) {
     console.log("error", error);
@@ -50,6 +52,8 @@ const handleSubmit = async (value) => {
     // .unwrap() is a utility function that will return either the fulfilled value or throw the rejected value as an error.
     const  data  = await login(value).unwrap();
       console.log("data form", data);
+      window.localStorage.setItem("accesstoken", data?.token);
+      window.localStorage.setItem("refreshToken", data?.refreshToken);
     dispatch(
       setCredentials(data),
       setCurrentUser(data)

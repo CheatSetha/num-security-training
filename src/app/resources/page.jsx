@@ -1,8 +1,13 @@
+"use client"
 import CourseSampleCard from "@/components/CourseSampleCard";
+import { useGetCoursesQuery } from "@/store/features/course/courseSlice";
 import Image from "next/image";
 import React from "react";
 
 const Page = () => {
+const {data} = useGetCoursesQuery()
+console.log(data,"data courses")
+
   return (
     <div className="w-10/12 mx-auto bg-white pt-2 ">
       <div className="flex gap-8  bg-white shadow rounded-[24px] h-16 p-2">
@@ -54,6 +59,16 @@ const Page = () => {
 
         {/* data display here */}
         <div className="w-full mb-3 flex  flex-wrap flex-shrink gap-3">
+          {data?.data?.map((course) => (
+            <CourseSampleCard
+              key={course._id}
+              courseName={course.title}
+              thumnail={course.courseThumbnail}
+              id={course._id}
+            />
+          
+          ))}
+          {/* <CourseSampleCard />
           <CourseSampleCard />
           <CourseSampleCard />
           <CourseSampleCard />
@@ -62,8 +77,7 @@ const Page = () => {
           <CourseSampleCard />
           <CourseSampleCard />
           <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard />
+          <CourseSampleCard /> */}
         </div>
       </div>
     </div>

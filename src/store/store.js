@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./api/apiSlice";
-import authReducer from "./features/auth/authSlice";
+import authReducer, { loadTokensFromStorage } from "./features/auth/authSlice";
 
 const store = configureStore({
     reducer: {
@@ -15,5 +15,6 @@ const store = configureStore({
     // devTools must set to false in production
     devTools: true,
 });
+store.dispatch(loadTokensFromStorage());
 
 export default store;
