@@ -1,6 +1,5 @@
 "use client";
 
-import { getDecryptedRefreshToken } from "@/lib/cryptography";
 import { useGetMeQuery } from "@/store/features/auth/authApiSlice";
 import { setCurrentUser } from "@/store/features/auth/authSlice";
 import Image from "next/image";
@@ -10,22 +9,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const Navbar = () => {
   const { data: user, isLoading, isSuccess } = useGetMeQuery();
-  const data = useSelector((state) => state.auth);
-  console.log(data, "this is the data in nvabar");
-  console.log(useSelector((state) => state))
-
   const dispatch = useDispatch();
 
   isLoading && console.log("loading");
   isSuccess && console.log("get me fetch success");
   isSuccess && console.log(user, "user data");
   isSuccess && dispatch(setCurrentUser(user));
-  //  console.log(getDecryptedRefreshToken(),"plain refresh token")
+
   const handleGetToken = async () => {
-    const token = await getDecryptedRefreshToken();
-    console.log("token", token);
+    const token = window.localStorage.getItem("accesstoken");
   };
-  // handle getme
+
   const handleGetMe = async () => {
     try {
       const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}auth/me`, {
@@ -48,7 +42,6 @@ export const Navbar = () => {
   useEffect(() => {
     handleGetMe();
     handleGetToken();
-  
   }, []);
 
   let isLogged = user ? true : false;
@@ -109,11 +102,14 @@ export const Navbar = () => {
                       tabIndex="0"
                     >
                       <img
-                        src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                        alt="avatar"
+                        className="w-16 rounded-full avatar-ring"
+                        src={
+                          user?.data.avatar ||
+                          "/assets/images/userconsole/pf.jpg"
+                        }
                       />
                     </label>
-                 
+
                     <div className="dropdown-menu dropdown-menu-bottom-left bg-white">
                       <Link
                         href={"/user/setting"}

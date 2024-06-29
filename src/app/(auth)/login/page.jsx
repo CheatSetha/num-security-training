@@ -7,7 +7,10 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useLoginMutation } from "@/store/features/auth/authApiSlice";
-import { setCredentials, setCurrentUser } from "@/store/features/auth/authSlice";
+import {
+  setCredentials,
+  setCurrentUser,
+} from "@/store/features/auth/authSlice";
 // import { selectToken, setToken } from "@/store/features/auth/authStatus";
 
 // formik component
@@ -18,65 +21,53 @@ const validationShcema = Yup.object({
     .required("Required"),
 });
 
-
 const Page = () => {
-// redux state
-const router = useRouter();
-const dispatch = useDispatch();
-const [login, {isLoading,isError, isSuccess}] = useLoginMutation()
-  
+  // redux state
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [login, { isLoading, isError, isSuccess }] = useLoginMutation();
 
-const handleGetMe = async (token) => {
-  try {
-    const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}auth/me`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const response = await data.json();
-    console.log("response in login page", response);
-    if (response.code === 200) {
-      dispatch(setCurrentUser(response));
-      // set refresh token to local storage
-      
+  const handleGetMe = async (token) => {
+    try {
+      const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}auth/me`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const response = await data.json();
+      if (response.code === 200) {
+        dispatch(setCurrentUser(response));
+        // set refresh token to local storage
+      }
+    } catch (error) {
+      console.log("error", error);
     }
-  } catch (error) {
-    console.log("error", error);
-  }
-};
-const handleSubmit = async (value) => {
- 
-  try {
-    // .unwrap() is a utility function that will return either the fulfilled value or throw the rejected value as an error.
-    const  data  = await login(value).unwrap();
-      console.log("data form", data);
+  };
+  const handleSubmit = async (value) => {
+    try {
+      // .unwrap() is a utility function that will return either the fulfilled value or throw the rejected value as an error.
+      const data = await login(value).unwrap();
+
       window.localStorage.setItem("accesstoken", data?.token);
       window.localStorage.setItem("refreshToken", data?.refreshToken);
-    dispatch(
-      setCredentials(data),
-      setCurrentUser(data)
-  
-    );
-    handleGetMe(data?.token)
-    alert("Login Successful");
-    router.push("/");
-  } catch (error) {
-    if (!error.response) {
-      alert("No Server Response");
-      console.log(error)
-    } else if (error.response.status === 400) {
-      alert("Missing email or password");
-    } else if (error.response.status === 403) {
-      alert("Forbidden - You don't have permission to access this resource");
+      dispatch(setCredentials(data), setCurrentUser(data));
+      handleGetMe(data?.token);
+      alert("Login Successful");
+      router.push("/");
+    } catch (error) {
+      if (!error.response) {
+        alert("No Server Response");
+        console.log(error);
+      } else if (error.response.status === 400) {
+        alert("Missing email or password");
+      } else if (error.response.status === 403) {
+        alert("Forbidden - You don't have permission to access this resource");
+      }
     }
-  }
-};
-// useEffect(()=>{
-//   handleGetMe()
+  };
 
-// },[])
   return (
     <div className="w-full pb-8  bg-white z-0">
       {/* layout background first */}

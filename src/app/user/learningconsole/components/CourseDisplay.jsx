@@ -8,7 +8,7 @@ import CourseCard from "./CourseCard";
 export const CourseDisplay = () => {
     const {data,isLoading , isSuccess } = useGetMeQuery()
     const enrolledCourses = data?.data?.enrolledCourses;
-    console.log(enrolledCourses, "enrolled courses")
+    // console.log(enrolledCourses, "enrolled courses")
     
 
   return (

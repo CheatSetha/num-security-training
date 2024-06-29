@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import CourseSampleCard from "@/components/CourseSampleCard";
 import { useGetCoursesQuery } from "@/store/features/course/courseSlice";
 import Image from "next/image";
 import React from "react";
 
 const Page = () => {
-const {data} = useGetCoursesQuery()
-console.log(data,"data courses")
+  const { data } = useGetCoursesQuery();
+  console.log(data, "data courses");
 
   return (
     <div className="w-10/12 mx-auto bg-white pt-2 ">
@@ -66,18 +66,7 @@ console.log(data,"data courses")
               thumnail={course.courseThumbnail}
               id={course._id}
             />
-          
           ))}
-          {/* <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard />
-          <CourseSampleCard /> */}
         </div>
       </div>
     </div>

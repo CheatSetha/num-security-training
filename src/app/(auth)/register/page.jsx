@@ -3,6 +3,10 @@ import Image from "next/image";
 import React from "react";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useRouter } from "next/navigation";
+import { useRegisterMutation } from "@/store/features/auth/authApiSlice";
+import { useDispatch } from "react-redux";
+import { setCredentials, setCurrentUser } from "@/store/features/auth/authSlice";
 
 // formik component
 const validationShcema = Yup.object({
@@ -16,7 +20,61 @@ const validationShcema = Yup.object({
 });
 
 const Page = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [register, { isLoading, isError, isSuccess }] = useRegisterMutation();
+ 
+const handleGetMe = async (token) => {
+  try {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}auth/me`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const response = await data.json();
+    console.log("response in login page", response);
+    if (response.code === 200) {
+      dispatch(setCurrentUser(response));
+      // set refresh token to local storage
+      
+    }
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
+const handleSubmit = async (value) => {
+  console.log("clicked", value)
+
+ 
+  try {
   
+    const  data  = await register(value).unwrap();
+      console.log("data form", data);
+      window.localStorage.setItem("accesstoken", data?.token);
+      window.localStorage.setItem("refreshToken", data?.refreshToken);
+    dispatch(
+      setCredentials(data?.data),
+      setCurrentUser(data?.data)
+  
+    );
+    console.log(data, "data from register")
+    handleGetMe(data?.token)
+    alert("Register Successful");
+    router.push("/");
+  } catch (error) {
+    if (!error.response) {
+      
+      console.log(error)
+    } else if (error.response.status === 400) {
+      alert("Invalid Email or Password");
+    } else if (error.response.status === 403) {
+      alert("Forbidden - You don't have permission to access this resource");
+    }
+  }
+};
   return (
     <div className="w-full   pb-8 bg-white z-0">
       {/* layout background first */}
@@ -55,12 +113,11 @@ const Page = () => {
             initialValues={{
               email: "",
               password: "",
-              confirmedPassword: "",
+              confirmPassword: "",
             }}
             validationSchema={validationShcema}
-            onSubmit={(values) => {
-              console.log(values);
-            }}
+            onSubmit={handleSubmit}
+            
           >
             {({ isSubmitting }) => (
               <Form className="flex flex-col gap-4">
@@ -71,7 +128,7 @@ const Page = () => {
                     name="email"
                     type="email"
                     placeholder="Email"
-                    className="border-2 bg-slate-50 border-primary rounded-md mt-2 h-11 w-full"
+                    className="border-2  bg-slate-50 border-primary rounded-md mt-2 h-11 w-full"
                   />
                   <ErrorMessage
                     name="email"

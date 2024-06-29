@@ -15,6 +15,6 @@ const store = configureStore({
     // devTools must set to false in production
     devTools: true,
 });
-store.dispatch(loadTokensFromStorage());
+// store.dispatch(loadTokensFromStorage());
 
 export default store;
